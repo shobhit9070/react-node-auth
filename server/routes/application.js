@@ -45,12 +45,25 @@ async function application_data_insert(data) {
 
 
 router.post("/",async function(req, res)  {
-    let data = {name:req.body}
-    application_data_insert(data)
+    console.log(req.body)
+    const contactInfo = req.body.contactInformation
+    const companyInfo = req.body.companyInformation
+    const portfolioInfo = req.body.portfolioInformation
 
-    console.log(req)
-    if(err) throw err;
-    res.send(JSON.stringify({"status": 200, "error": null, "response": results}));
+    const fullname = contactInfo.fullname
+    const position = contactInfo.position
+    const dob = contactInfo.dob
+    const phoneNo = contactInfo.phoneNumber 
+    const email = contactInfo.email
+    const linkedIn = contactInfo.linkedinProfile
+    const taxId = companyInfo.taxIdNumber
+    const compName = companyInfo.companyName 
+    const compType = companyInfo.companyType
+    const compWeb = companyInfo.webpage
+
+  // discuss how to store the pdfs and the images in the database
+
+    res.send(JSON.stringify({"status": 200, "error": null}));
   })
 
 
