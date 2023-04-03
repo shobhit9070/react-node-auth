@@ -19,26 +19,38 @@ export function Signup() {
     // Get email and password input values
     const email = emailRef.current.value
     const password = passwordRef.current.value
-
+    const { data, err } = await supabase
+      .from('users')
+      .select()
+      .eq('email', email)
+    if (data.length !== 0){
+      alert("user already exists")
+      history.push('/login')
+    }
     // Calls `signUp` function from the context
-    const { error } = await signUp({ email, password })
-    console.log(error)
-    if (error) {
-      alert('error signing in')
-    } else {
-        supabase.auth.getSession().then(({ data }) => {
-            const x = data.session.user
+    else{
+      const { error } = await signUp({ email, password })
+      console.log(error)
+      if (error) {
+        alert('error signing in')
+      } 
+      else {
+      
             fetch("http://localhost:5000/user-login",{
-                method: 'POST', 
-                body: JSON.stringify({x,email,password}),
-                headers: {
-                    'Content-Type': 'application/json'
-                }
+                  method: 'POST', 
+                  body: JSON.stringify({email,password}),
+                  headers: {
+                      'Content-Type': 'application/json'
+                  }
             })
-        })
-        // fetch("local5000/store-user")
-      // Redirect user to Dashboard
-      history.push('/')
+            alert("check your mail")
+
+            //}
+          // fetch("local5000/store-user")
+        // Redirect user to Dashboard
+        history.push('/login')
+        
+      }
     } 
   }
 

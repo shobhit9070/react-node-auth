@@ -50,16 +50,20 @@ router.post("/",async function(req, res)  {
     const companyInfo = req.body.companyInformation
     const portfolioInfo = req.body.portfolioInformation
 
-    const fullname = contactInfo.fullname
-    const position = contactInfo.position
-    const dob = contactInfo.dob
-    const phoneNo = contactInfo.phoneNumber 
-    const email = contactInfo.email
-    const linkedIn = contactInfo.linkedinProfile
-    const taxId = companyInfo.taxIdNumber
-    const compName = companyInfo.companyName 
-    const compType = companyInfo.companyType
-    const compWeb = companyInfo.webpage
+    // const fullname = contactInfo.fullname
+    // const position = contactInfo.position
+    // const dob = contactInfo.dob
+    // const phoneNo = contactInfo.phoneNumber 
+    // const email = contactInfo.email
+    // const linkedIn = contactInfo.linkedinProfile
+    // const taxId = companyInfo.taxIdNumber
+    // const compName = companyInfo.companyName 
+    // const compType = companyInfo.companyType
+    // const compWeb = companyInfo.webpage
+
+    console.log(contactInfo)
+    console.log(companyInfo)
+    console.log(portfolioInfo)
 
   // discuss how to store the pdfs and the images in the database
 

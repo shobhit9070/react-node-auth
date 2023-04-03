@@ -10,17 +10,17 @@ async function user_data_insert (data) {
 }
 
 router.post('/',async function(req,res) {
-    console.log(req.body)
-    const user_id = req.body.x.id
+    // console.log(req.body)
+    // const user_id = req.body.x.id
     const email = req.body.email
     const password = req.body.password
-    const timestamp = req.body.x.created_at
-    console.log(typeof user_id)
+    // const timestamp = req.body.x.created_at
+    // console.log(typeof user_id)
+    const timestamp = new Date()
     const { data, error } = await supabase
       .from('users')
       .insert([
-        { users_id: 1032441, email: email,password:password,email_updates:true,accepted_terms_conditions:true,is_verified:true,
-            creation_date_time:timestamp
+        { email: email,password:password,email_updates:true,accepted_terms_conditions:true,is_verified:true,creation_date_time:timestamp
         }
       ])
     
@@ -28,7 +28,7 @@ router.post('/',async function(req,res) {
         console.log(error)
     }
     else{
-        console.log(data)
+        console.log(req.body)
         res.send(JSON.stringify({"status": 200, "error": null, "response": data}));
     }
     

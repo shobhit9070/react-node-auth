@@ -2,6 +2,7 @@ import { useRef, useState } from 'react'
 import { useHistory, Link } from 'react-router-dom'
 
 import { useAuth } from './Auth'
+import { supabase } from './supabase'
 
 export function Login() {
   const emailRef = useRef()
@@ -27,8 +28,22 @@ export function Login() {
       alert('error signing in')
     } else {
       // Redirect user to Dashboard
+      // const {data}  = await supabase.auth.getSession()
+      // const id = data.session.user
+      // const {error} = await fetch("http://localhost:5000/storeuserid",{
+      //   method: 'POST',
+      //   body: JSON.stringify({id,email}),
+      //   headers: {
+      //     'Content-Type': 'application/json'
+      //   }
+      // })
+      // if (error){
+      //   console.log(error)
+      // }
+      // else{
       history.push('/')
-    }
+      }
+    
   }
 
   return (
